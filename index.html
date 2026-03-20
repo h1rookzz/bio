@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@rampaev_ | Bio</title>
+    <style>
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: #000; font-family: 'Inter', sans-serif;
+            color: white; overflow: hidden; display: flex;
+            justify-content: center; align-items: center;
+        }
+
+        /* Экран входа */
+        #enter-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 999; display: flex;
+            justify-content: center; align-items: center; cursor: pointer;
+            transition: opacity 1.2s ease;
+        }
+
+        #enter-screen span {
+            font-size: 1rem; letter-spacing: 8px; text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+        /* Фон */
+        #bg-video {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: -1; filter: brightness(0.4) blur(3px);
+            display: none;
+        }
+
+        /* Карточка */
+        #main-content {
+            opacity: 0; transform: scale(0.9);
+            transition: opacity 2s ease, transform 1.5s ease;
+            text-align: center; z-index: 1;
+        }
+
+        .profile-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 50px 40px; border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+        }
+
+        h1 { font-size: 3.5rem; margin: 0; letter-spacing: -1px; }
+        .desc { opacity: 0.5; margin-top: 10px; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; }
+
+        .links { margin-top: 30px; display: flex; justify-content: center; gap: 20px; }
+        .links a {
+            color: #fff; text-decoration: none; font-size: 1.1rem;
+            opacity: 0.6; transition: 0.4s;
+        }
+        .links a:hover { opacity: 1; transform: translateY(-3px); text-shadow: 0 0 10px #fff; }
+    </style>
+</head>
+<body>
+
+    <div id="enter-screen" onclick="startBio()">
+        <span>[ CLICK TO ENTER ]</span>
+    </div>
+
+    <video id="bg-video" loop muted playsinline>
+        <source src="https://motionbgs.com/media/2432/retro-night-drive.mp4" type="video/mp4">
+    </video>
+
+    <audio id="bg-audio" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="main-content">
+        <div class="profile-card">
+            <h1>@rampaev_</h1>
+            <div class="desc">Python Developer | Telegram Bots</div>
+            <div class="links">
+                <a href="https://t.me/rampaev_" target="_blank">Telegram</a>
+                <a href="https://github.com/h1rookzz" target="_blank">GitHub</a>
+                <a href="https://tiktok.com/@rampaev_" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startBio() {
+            const enter = document.getElementById('enter-screen');
+            const main = document.getElementById('main-content');
+            const video = document.getElementById('bg-video');
+            const audio = document.getElementById('bg-audio');
+
+            enter.style.opacity = '0';
+            setTimeout(() => {
+                enter.style.display = 'none';
+                video.style.display = 'block';
+                video.play();
+                audio.volume = 0.5;
+                audio.play();
+                main.style.opacity = '1';
+                main.style.transform = 'scale(1)';
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
